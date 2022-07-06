@@ -1,5 +1,5 @@
 package beverages;
 
-public interface Beverage {
+public interface Priceable {
     double price();
 }

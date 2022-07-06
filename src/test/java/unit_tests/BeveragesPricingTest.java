@@ -10,19 +10,19 @@ import static org.hamcrest.Matchers.closeTo;
 public class BeveragesPricingTest {
     @Test
     public void computes_coffee_price() {
-        Beverage coffee = new Coffee();
+        Priceable coffee = new Coffee();
         assertThat(coffee.price(), is(closeTo(1.20, 0.001)));
     }
 
     @Test
     public void computes_tea_price() {
-        Beverage tea = new Tea();
+        Priceable tea = new Tea();
         assertThat(tea.price(), is(closeTo(1.50, 0.001)));
     }
 
     @Test
     public void computes_hot_chocolate_price() {
-        Beverage hotChocolate = new HotChocolate();
+        Priceable hotChocolate = new HotChocolate();
         assertThat(hotChocolate.price(), is(closeTo(1.45, 0.001)));
     }
 
