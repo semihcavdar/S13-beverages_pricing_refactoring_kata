@@ -33,7 +33,7 @@ public class BeveragesPricingTest {
 
     @Test
     public void computes_tea_with_milk_price() {
-        Tea teaWithMilk = new TeaWithMilk();
+        Priceable teaWithMilk = new WithMilk(new Tea());
         assertThat(teaWithMilk.price(), is(closeTo(1.60, 0.001)));
     }
 
