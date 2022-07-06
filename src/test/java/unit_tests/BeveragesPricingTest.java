@@ -8,10 +8,15 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.closeTo;
 
 public class BeveragesPricingTest {
+
+    public static final double REGULAR_COFFE_PRICE = 1.20;
+    public static final double CREAM_OVERHEAD = 0.15;
+    public static final double MILK_OVERHEAD = 0.10;
+
     @Test
     public void computes_coffee_price() {
         Priceable coffee = new Coffee();
-        assertThat(coffee.price(), is(closeTo(1.20, 0.001)));
+        assertThat(coffee.price(), is(closeTo(REGULAR_COFFE_PRICE, 0.001)));
     }
 
     @Test
@@ -48,5 +53,14 @@ public class BeveragesPricingTest {
     public void computes_hot_chocolate_with_cream_price() {
         HotChocolateWithCream hotChocolateWithCream = new HotChocolateWithCream();
         assertThat(hotChocolateWithCream.price(),  is(closeTo(1.60, 0.001)));
+    }
+
+    @Test
+    public void allows_compounding_of_supplements()
+    {
+        Coffee coffee = new Coffee();
+        Priceable coffeeWithMilkAndCream = new WithMilk(new WithCream(coffee));
+
+        assertThat(REGULAR_COFFE_PRICE + CREAM_OVERHEAD + MILK_OVERHEAD, is(closeTo(coffeeWithMilkAndCream.price(), 0.001)));
     }
 }
