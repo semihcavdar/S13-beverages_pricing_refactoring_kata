@@ -54,13 +54,4 @@ public class BeveragesPricingTest {
         Priceable hotChocolateWithCream = new WithCream(new HotChocolate());
         assertThat(hotChocolateWithCream.price(),  is(closeTo(1.60, 0.001)));
     }
-
-    @Test
-    public void allows_compounding_of_supplements()
-    {
-        Coffee coffee = new Coffee();
-        Priceable coffeeWithMilkAndCream = new WithMilk(new WithCream(coffee));
-
-        assertThat(REGULAR_COFFE_PRICE + CREAM_OVERHEAD + MILK_OVERHEAD, is(closeTo(coffeeWithMilkAndCream.price(), 0.001)));
-    }
 }
